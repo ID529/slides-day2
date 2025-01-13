@@ -15,26 +15,12 @@ ID 529: Data Management and Analytic Workflows in R
 :::
 
 ::: {.white-12-pt}
-Dean Marengi \| Tuesday, January 9<sup>th</sup>, 2024
+Dean Marengi \| Tuesday, January 14<sup>th</sup>, 2025
 :::
-
-<!-- ##  -->
-
-<!-- <br> <br> <br> -->
-
-<!-- <center> -->
-
-<!-- > "See the data, read the data, be the data." -->
-<!-- > -->
-<!-- > -- <cite>*Someone, somewhere, probably*</cite> -->
-
-<!-- </center> -->
-
 
 ## Motivation {.smaller}
 
 - **So far, we've learned a bit about:**
-  <!-- -   [Data dictionaries]{.blue-bold} and their importance for reproducible research -->
   -   [Git and GitHub]{.blue-bold} for code version control and management
   -   [R and R Studio]{.blue-bold} as tools for working with and analyzing data
 
@@ -74,7 +60,6 @@ Dean Marengi \| Tuesday, January 9<sup>th</sup>, 2024
 
 # Data Storage Methods {.white-title background-image="images/bg-collatz-3.png" background-size="cover"}
 
-<!-- ## Sources of data in research {.smaller} -->
 
 ## Flat files {.smaller}
 
@@ -91,16 +76,16 @@ Dean Marengi \| Tuesday, January 9<sup>th</sup>, 2024
 
 :::: {.columns}
 ::: {.column width="50%"}
--   **Flat file types typically include:**
+-   **Flat file types include:**
     -   `csv`: comma-separated values
-    -   `tsv`: tab-separated values
-    -   `txt`: plain text with other delimiter
-    -   `fwf`: fixed-width files (stored as a `txt` file)
+    -   `txt`: plain text with delimiter
+        -   values separated by character (e.g., `;` `|`) 
+        -   fixed-width files (`fwf`)
+        -   tab-separated values (`tsv`)
 :::
 ::::
 
 ![](images/read-flat-files.png){.absolute right="0" bottom="120" height="60%"}
-
 
 ## Excel files {.smaller}
 -   **Excel can store data in file formats other than a csv**
@@ -150,9 +135,6 @@ Dean Marengi \| Tuesday, January 9<sup>th</sup>, 2024
     -   Hostname, port number, and other parameters
 -   Database tables can be queried from R once a connection is established
 
-
-<!-- ## JSON {.smaller} -->
-
 ## How can we import data into R? {.smaller}
 
 -   **Base R read functions**
@@ -178,7 +160,6 @@ Dean Marengi \| Tuesday, January 9<sup>th</sup>, 2024
   -   The unique needs of your project
   -   The characteristics of the underlying data
 
-
 # Base R read functions {.white-title background-image="images/bg-collatz-1.png" background-size="cover"}
 
 ## Base R read funtions {.smaller}
@@ -187,8 +168,6 @@ Dean Marengi \| Tuesday, January 9<sup>th</sup>, 2024
 -   Reading tabular data from flat and rds files
 -   Imported data stored as a data frame
 -   Number of function arguments to customize data import
-
-<!-- -   Less efficient data handling for large datasets -->
 
 ::: {.small-break}
 :::
@@ -199,11 +178,12 @@ Dean Marengi \| Tuesday, January 9<sup>th</sup>, 2024
     -   `read.delim()`: delimited text files
     -   `read.fwf()`: fixed-width text files
     -   `readRDS()`: R data stream (rds) files
+    -   *^Notice the `.` used in function names*
 
 ::: {.small-break}
 :::
 
--   These read functions are wrappers around `read.table` (with the exception of `readRDS`)
+-   Above functions are wrappers around `read.table` (except `readRDS`)
 -   Run `?read.table()` in R Studio console to learn more
 
 :::
@@ -257,7 +237,7 @@ data
 
 :::: {.columns}
 ::: {.column width="60%"}
--   Reading tabular data from flat and rds files
+-   Reading tabular data from csv, flat, and rds files
 -   Part of the [core]{.blue-bold} `tidyverse` package ecosystem
   -   Imported data stored as [tibble data frame]{.blue-bold}
   -   Informative error and warning messages
@@ -272,6 +252,7 @@ data
     -   `read_delim()`: delimited text files
     -   `read_fwf()`: fixed-width text files
     -   `read_rds()`: R data stream (rds) files
+    -   *^Notice the `_` used in function names*
 :::
 
 ::: {.column width="40%"}
@@ -342,13 +323,12 @@ data
 ```
 
 - We did it! Many read functions include arguments to define data types or address other issues
-- [**Always look at your data, and be vigilant about potential data import problems**]{.blue-bold}
+- [**Always look at your data, and inspect it for potential data import problems**]{.blue-bold}
 
 ## Example: `read_delim()` {.smaller}
 ```{r, echo=T}
-
 # Read in data and specify data types for specific columns and the delimiter used in the file
-data <- read_delim("data/cvdstudy.txt", delim = "\t", na = "NA",
+data <- read_delim("data/cvdstudy.txt", delim = "\t", na = c("N/A", "NA"),
                    col_types = cols(
                      id = col_character(),
                      smoke = col_factor(levels = c("0", "1")),
@@ -361,9 +341,9 @@ data
 ```
 
 -   Notice that the syntax is identical to read_csv, with the exception of the `delim` argument
-    -   `\t` is passed to the `delim` argument to indicate a tab delimiter in the file
--   We also had to indicate `NA` as the character string to interpret as missing values
-    -   The source data includes the text "NA" in place of missing values 
+    -   `\t` is passed to the `delim` argument to indicate a tab delimiter
+-   We can also indicate `NA` and `N/A` as character strings to interpret as missing values
+    -   The source data includes the text "NA" or "N/A" in place of missing values 
 
 <!-- ![](images/read-tsv-file.png){.absolute right="0" center="20" height="20%"} -->
 
@@ -435,8 +415,13 @@ col_types <- c("text", "date", "numeric", "guess", "guess", "numeric",
                "numeric", "numeric", "numeric", "numeric")
 
 # Read in the xlsx file, which we know is located on sheet 2 inside of the file
-data <- read_xlsx("data/cvdstudy.xlsx", sheet = 2, skip = 10, 
-                  col_names = TRUE, col_types = col_types)
+data <- read_xlsx(
+  "data/cvdstudy.xlsx",
+  sheet = 2,
+  skip = 10,
+  col_names = TRUE,
+  col_types = col_types
+)
 
 # Look at the data
 data
@@ -472,7 +457,7 @@ data
 . . .
 
 
-![](images/thumbs-up.gif){.absolute right="0" bottom="100" height="40%"}
+![](images/chill-guy-sunset.gif){.absolute right="0" bottom="70" height="50%"}
 
 
 ## `haven` {.smaller}
@@ -673,7 +658,9 @@ data
 -   In addition to base R functions, many R packages include functions with more robust functionality
     -   Different functions have implications for how data are handled when read into R
         -   For example, whether the data are stored as a standard data frame or tibble data frame
-            - Useful packages include: `readr`, `readxl`, and `haven` (but there are many more!)
+            - Useful packages include: `readr`, `readxl`, and `haven` (but there are many more!) e.g.,
+                - `library(jsonlite)`: JSON files (common format for web-based data)
+                - `library(xml2)`: XML files
 
 ::: {.small-break}
 :::
@@ -695,3 +682,9 @@ data
 -   R for Data Science, 2nd edition by Hadley Wickham et. al
     -   <https://r4ds.hadley.nz/data-import>
     -   <https://r4ds.hadley.nz/import>
+
+::: {.small-break}
+:::
+
+-   The Epidemiologist R Handbook
+    -   <https://www.epirhandbook.com/en/new_pages/importing.html>

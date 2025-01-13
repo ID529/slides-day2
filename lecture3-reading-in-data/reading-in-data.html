@@ -396,20 +396,13 @@
 <p>ID 529: Data Management and Analytic Workflows in R</p>
 </div>
 <div class="white-12-pt">
-<p>Dean Marengi | Tuesday, January 9<sup>th</sup>, 2024</p>
+<p>Dean Marengi | Tuesday, January 14<sup>th</sup>, 2025</p>
 </div>
-<!-- ##  -->
-<!-- <br> <br> <br> -->
-<!-- <center> -->
-<!-- > "See the data, read the data, be the data." -->
-<!-- > -->
-<!-- > -- <cite>*Someone, somewhere, probably*</cite> -->
-<!-- </center> -->
 </section>
 <section id="motivation" class="slide level2 smaller">
 <h2>Motivation</h2>
 <ul>
-<li><strong>So far, we’ve learned a bit about:</strong> <!-- -   [Data dictionaries]{.blue-bold} and their importance for reproducible research -->
+<li><strong>So far, we’ve learned a bit about:</strong>
 <ul>
 <li><span class="blue-bold">Git and GitHub</span> for code version control and management</li>
 <li><span class="blue-bold">R and R Studio</span> as tools for working with and analyzing data</li>
@@ -466,7 +459,7 @@
 <section>
 <section id="data-storage-methods" class="title-slide slide level1 white-title center" data-background-image="images/bg-collatz-3.png" data-background-size="cover">
 <h1>Data Storage Methods</h1>
-<!-- ## Sources of data in research {.smaller} -->
+
 </section>
 <section id="flat-files" class="slide level2 smaller">
 <h2>Flat files</h2>
@@ -489,12 +482,15 @@
 <div class="columns">
 <div class="column" style="width:50%;">
 <ul>
-<li><strong>Flat file types typically include:</strong>
+<li><strong>Flat file types include:</strong>
 <ul>
 <li><code>csv</code>: comma-separated values</li>
-<li><code>tsv</code>: tab-separated values</li>
-<li><code>txt</code>: plain text with other delimiter</li>
-<li><code>fwf</code>: fixed-width files (stored as a <code>txt</code> file)</li>
+<li><code>txt</code>: plain text with delimiter
+<ul>
+<li>values separated by character (e.g., <code>;</code> <code>|</code>)</li>
+<li>fixed-width files (<code>fwf</code>)</li>
+<li>tab-separated values (<code>tsv</code>)</li>
+</ul></li>
 </ul></li>
 </ul>
 </div>
@@ -568,7 +564,6 @@
 </ul></li>
 <li>Database tables can be queried from R once a connection is established</li>
 </ul>
-<!-- ## JSON {.smaller} -->
 </section>
 <section id="how-can-we-import-data-into-r" class="slide level2 smaller">
 <h2>How can we import data into R?</h2>
@@ -618,7 +613,6 @@
 <li>Imported data stored as a data frame</li>
 <li>Number of function arguments to customize data import</li>
 </ul>
-<!-- -   Less efficient data handling for large datasets -->
 <div class="small-break">
 
 </div>
@@ -630,13 +624,14 @@
 <li><code>read.delim()</code>: delimited text files</li>
 <li><code>read.fwf()</code>: fixed-width text files</li>
 <li><code>readRDS()</code>: R data stream (rds) files</li>
+<li><em>^Notice the <code>.</code> used in function names</em></li>
 </ul></li>
 </ul>
 <div class="small-break">
 
 </div>
 <ul>
-<li>These read functions are wrappers around <code>read.table</code> (with the exception of <code>readRDS</code>)</li>
+<li>Above functions are wrappers around <code>read.table</code> (except <code>readRDS</code>)</li>
 <li>Run <code>?read.table()</code> in R Studio console to learn more</li>
 </ul>
 </div><div class="column" style="width:40%;">
@@ -3094,7 +3089,7 @@
 <div class="columns">
 <div class="column" style="width:60%;">
 <ul>
-<li>Reading tabular data from flat and rds files</li>
+<li>Reading tabular data from csv, flat, and rds files</li>
 <li>Part of the <span class="blue-bold">core</span> <code>tidyverse</code> package ecosystem</li>
 <li>Imported data stored as <span class="blue-bold">tibble data frame</span></li>
 <li>Informative error and warning messages</li>
@@ -3111,6 +3106,7 @@
 <li><code>read_delim()</code>: delimited text files</li>
 <li><code>read_fwf()</code>: fixed-width text files</li>
 <li><code>read_rds()</code>: R data stream (rds) files</li>
+<li><em>^Notice the <code>_</code> used in function names</em></li>
 </ul></li>
 </ul>
 </div><div class="column" style="width:40%;">
@@ -3214,14 +3210,14 @@
 </div>
 <ul>
 <li>We did it! Many read functions include arguments to define data types or address other issues</li>
-<li><span class="blue-bold"><strong>Always look at your data, and be vigilant about potential data import problems</strong></span></li>
+<li><span class="blue-bold"><strong>Always look at your data, and inspect it for potential data import problems</strong></span></li>
 </ul>
 </section>
 <section id="example-read_delim" class="slide level2 smaller">
 <h2>Example: <code>read_delim()</code></h2>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1"></a><span class="co"># Read in data and specify data types for specific columns and the delimiter used in the file</span></span>
-<span id="cb9-2"><a href="#cb9-2"></a>data <span class="ot">&lt;-</span> <span class="fu">read_delim</span>(<span class="st">"data/cvdstudy.txt"</span>, <span class="at">delim =</span> <span class="st">"</span><span class="sc">\t</span><span class="st">"</span>, <span class="at">na =</span> <span class="st">"NA"</span>,</span>
+<span id="cb9-2"><a href="#cb9-2"></a>data <span class="ot">&lt;-</span> <span class="fu">read_delim</span>(<span class="st">"data/cvdstudy.txt"</span>, <span class="at">delim =</span> <span class="st">"</span><span class="sc">\t</span><span class="st">"</span>, <span class="at">na =</span> <span class="fu">c</span>(<span class="st">"N/A"</span>, <span class="st">"NA"</span>),</span>
 <span id="cb9-3"><a href="#cb9-3"></a>                   <span class="at">col_types =</span> <span class="fu">cols</span>(</span>
 <span id="cb9-4"><a href="#cb9-4"></a>                     <span class="at">id =</span> <span class="fu">col_character</span>(),</span>
 <span id="cb9-5"><a href="#cb9-5"></a>                     <span class="at">smoke =</span> <span class="fu">col_factor</span>(<span class="at">levels =</span> <span class="fu">c</span>(<span class="st">"0"</span>, <span class="st">"1"</span>)),</span>
@@ -3251,11 +3247,11 @@
 <ul>
 <li>Notice that the syntax is identical to read_csv, with the exception of the <code>delim</code> argument
 <ul>
-<li><code>\t</code> is passed to the <code>delim</code> argument to indicate a tab delimiter in the file</li>
+<li><code>\t</code> is passed to the <code>delim</code> argument to indicate a tab delimiter</li>
 </ul></li>
-<li>We also had to indicate <code>NA</code> as the character string to interpret as missing values
+<li>We can also indicate <code>NA</code> and <code>N/A</code> as character strings to interpret as missing values
 <ul>
-<li>The source data includes the text “NA” in place of missing values</li>
+<li>The source data includes the text “NA” or “N/A” in place of missing values</li>
 </ul></li>
 </ul>
 <!-- ![](images/read-tsv-file.png){.absolute right="0" center="20" height="20%"} -->
@@ -3349,11 +3345,16 @@
 <span id="cb14-3"><a href="#cb14-3"></a>               <span class="st">"numeric"</span>, <span class="st">"numeric"</span>, <span class="st">"numeric"</span>, <span class="st">"numeric"</span>)</span>
 <span id="cb14-4"><a href="#cb14-4"></a></span>
 <span id="cb14-5"><a href="#cb14-5"></a><span class="co"># Read in the xlsx file, which we know is located on sheet 2 inside of the file</span></span>
-<span id="cb14-6"><a href="#cb14-6"></a>data <span class="ot">&lt;-</span> <span class="fu">read_xlsx</span>(<span class="st">"data/cvdstudy.xlsx"</span>, <span class="at">sheet =</span> <span class="dv">2</span>, <span class="at">skip =</span> <span class="dv">10</span>, </span>
-<span id="cb14-7"><a href="#cb14-7"></a>                  <span class="at">col_names =</span> <span class="cn">TRUE</span>, <span class="at">col_types =</span> col_types)</span>
-<span id="cb14-8"><a href="#cb14-8"></a></span>
-<span id="cb14-9"><a href="#cb14-9"></a><span class="co"># Look at the data</span></span>
-<span id="cb14-10"><a href="#cb14-10"></a>data</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb14-6"><a href="#cb14-6"></a>data <span class="ot">&lt;-</span> <span class="fu">read_xlsx</span>(</span>
+<span id="cb14-7"><a href="#cb14-7"></a>  <span class="st">"data/cvdstudy.xlsx"</span>,</span>
+<span id="cb14-8"><a href="#cb14-8"></a>  <span class="at">sheet =</span> <span class="dv">2</span>,</span>
+<span id="cb14-9"><a href="#cb14-9"></a>  <span class="at">skip =</span> <span class="dv">10</span>,</span>
+<span id="cb14-10"><a href="#cb14-10"></a>  <span class="at">col_names =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb14-11"><a href="#cb14-11"></a>  <span class="at">col_types =</span> col_types</span>
+<span id="cb14-12"><a href="#cb14-12"></a>)</span>
+<span id="cb14-13"><a href="#cb14-13"></a></span>
+<span id="cb14-14"><a href="#cb14-14"></a><span class="co"># Look at the data</span></span>
+<span id="cb14-15"><a href="#cb14-15"></a>data</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 2,401 × 10
    id    survdate   age   edu smoke  cigs   sbp   dbp  chol glucose
@@ -3416,7 +3417,7 @@
 <p><br></p>
 <p><span class="blue-bold">Much better. We’ve come so far!</span></p>
 <div class="fragment">
-<p><img data-src="images/thumbs-up.gif" class="absolute" style="bottom: 100px; right: 0px; height: 40%; "></p>
+<p><img data-src="images/chill-guy-sunset.gif" class="absolute" style="bottom: 70px; right: 0px; height: 50%; "></p>
 </div>
 </section>
 <section id="haven" class="slide level2 smaller">
@@ -3733,7 +3734,11 @@
 <ul>
 <li class="fragment">For example, whether the data are stored as a standard data frame or tibble data frame
 <ul>
-<li class="fragment">Useful packages include: <code>readr</code>, <code>readxl</code>, and <code>haven</code> (but there are many more!)</li>
+<li class="fragment">Useful packages include: <code>readr</code>, <code>readxl</code>, and <code>haven</code> (but there are many more!) e.g.,
+<ul>
+<li class="fragment"><code>library(jsonlite)</code>: JSON files (common format for web-based data)</li>
+<li class="fragment"><code>library(xml2)</code>: XML files</li>
+</ul></li>
 </ul></li>
 </ul></li>
 </ul></li>
@@ -3766,6 +3771,15 @@
 <ul>
 <li><a href="https://r4ds.hadley.nz/data-import" class="uri">https://r4ds.hadley.nz/data-import</a></li>
 <li><a href="https://r4ds.hadley.nz/import" class="uri">https://r4ds.hadley.nz/import</a></li>
+</ul></li>
+</ul>
+<div class="small-break">
+
+</div>
+<ul>
+<li>The Epidemiologist R Handbook
+<ul>
+<li><a href="https://www.epirhandbook.com/en/new_pages/importing.html" class="uri">https://www.epirhandbook.com/en/new_pages/importing.html</a></li>
 </ul></li>
 </ul>
 
