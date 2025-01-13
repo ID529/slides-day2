@@ -6,6 +6,8 @@ format:
     logo: images/id529-sticker.png
     slide-number: true
     footer: "<https://id529.github.io/>"
+embed-resources: true
+    
 ---
 
 # Importing Data into R {.white-title background-image="images/bg-collatz-2.png" background-size="cover"}
