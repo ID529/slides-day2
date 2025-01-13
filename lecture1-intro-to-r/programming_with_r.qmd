@@ -1,11 +1,11 @@
 ---
-title: "Programming with R: Logic, Conditionals, and Loops"
+title: "<span style='color: #fff'>Programming with R: Logic, Conditionals, and Loops</span>"
 format: 
   revealjs:
     theme: [default, programming_with_r.scss]
 slide-number: true
 title-slide-attributes: 
-  data-background-image: "transition_slides/tyler-springhetti.jpg"
+  data-background-image: "https://github.com/ID529/lectures/blob/main/graphics/transition_slides/tyler-springhetti.jpg?raw=true"
   data-background-opacity: "60%"
   data-background-color: "black"
 revealjs-plugins:
@@ -28,7 +28,7 @@ job.” (Mosher’s Law of Software Engineering)
 
 :::
 
-# logic {background-image='transition_slides/tyler-springhetti.jpg' background-color='black' background-opacity='60%'}
+# logic {background-image='https://github.com/ID529/lectures/blob/main/graphics/transition_slides/tyler-springhetti.jpg?raw=true' background-color='black' background-opacity='60%'}
 
 ## logical operators 
 
@@ -172,7 +172,7 @@ some operators that will produce logical values are the
 
 :::{.columns}
 :::{.column}
-<img src="graphics/HoduTip.png" alt='Hodu Tip!'>
+<img src="https://github.com/ID529/lectures/blob/main/graphics/HoduTip.png?raw=true" alt='Hodu Tip!'>
 :::
 :::{.column}
 sometimes you don't want to compare two objects element-wise, but rather
@@ -335,7 +335,7 @@ y[which(areEven)]
 :::
 
 
-# conditionals {background-image='transition_slides/tyler-springhetti.jpg' background-color='black' background-opacity='60%'}
+# conditionals {background-image='https://github.com/ID529/lectures/blob/main/graphics/transition_slides/tyler-springhetti.jpg?raw=true.jpg' background-color='black' background-opacity='60%'}
 
 ## if 
 
@@ -532,7 +532,7 @@ if (x <= 33) {
 ```
 :::
 
-# loops {background-image='transition_slides/tyler-springhetti.jpg' background-color='black' background-opacity='60%'}
+# loops {background-image='https://github.com/ID529/lectures/blob/main/graphics/transition_slides/tyler-springhetti.jpg?raw=true' background-color='black' background-opacity='60%'}
 
 ## for loops
 
@@ -793,7 +793,7 @@ for (i in 1:10000) {
 summary(iterations_needed)
 ```
 
-# key takeaways  {background-image='transition_slides/tyler-springhetti.jpg' background-color='black' background-opacity='30%'}
+# key takeaways  {background-image='https://github.com/ID529/lectures/blob/main/graphics/transition_slides/tyler-springhetti.jpg?raw=true' background-color='black' background-opacity='30%'}
 
 :::{.incremental}
   - !, &, and <span style="font-family: SFMono-Regular, Menlo, Monaco, Consolas, Liberation Mono, Courier New, monospace;">|</span> should be your go-to logical operators
@@ -806,7 +806,7 @@ summary(iterations_needed)
   - use while loops to run code until a given condition is met
 :::
 
-# let's do a learnr tutorial {background-image='transition_slides/lode-lagrainge.jpg' background-color='black' background-opacity='50%'}
+# let's do a learnr tutorial {background-image='https://github.com/ID529/lectures/blob/main/graphics/transition_slides/lode-lagrainge.jpg?raw=true' background-color='black' background-opacity='50%'}
 
 :::{.xsmall}
 ```{.r}
