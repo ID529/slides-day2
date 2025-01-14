@@ -6,8 +6,7 @@ format:
     logo: images/id529-sticker.png
     slide-number: true
     footer: "<https://id529.github.io/>"
-embed-resources: true
-    
+# embed-resources: true
 ---
 
 # Importing Data into R {.white-title background-image="images/bg-collatz-2.png" background-size="cover"}
@@ -681,7 +680,7 @@ data
 
 ## Resources {.smaller}
 
--   R for Data Science, 2nd edition by Hadley Wickham et. al
+-   R for Data Science, 2nd edition by Hadley Wickham et al.
     -   <https://r4ds.hadley.nz/data-import>
     -   <https://r4ds.hadley.nz/import>
 
