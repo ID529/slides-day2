@@ -1,5 +1,5 @@
 ---
-title: "Data Visualization Activity"
+title: "<span style='color: white'>Data Visualization Activity</span>"
 format: 
   revealjs:
     theme: [default, style.scss]
