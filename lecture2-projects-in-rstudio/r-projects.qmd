@@ -154,7 +154,7 @@ versus: <br>
 (on Windows/Mac/Linux): pressing Ctrl+. [period] will open the Goto Function/File
 popup: 
 
-<img src="images/goto file function.png" alt="window for go to file function">
+<img src="images/goto_file_function.png" alt="window for go to file function">
 
 ## use the here package {.xxsmall}
 
