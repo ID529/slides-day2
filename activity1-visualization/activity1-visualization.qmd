@@ -9,7 +9,7 @@ lightbox: true
 title-slide-attributes:
   data-background-image: 'https://images.unsplash.com/photo-1460661419201-fd4cecdf8a8b' 
   data-background-color: 'black' 
-  data-background-opacity: '30%'
+  data-background-opacity: '70%'
 ---
 
 Outline: 
@@ -29,8 +29,6 @@ a bar chart of major city population sizes.
 
 ## Example — Population Size Over Time 
 
-:::{.columns}
-:::{.column width='70%'}
 
 ```{r}
 #| eval: false
@@ -73,16 +71,13 @@ ggplot(texas_population_over_time, aes(x = year, y = pop / 1e6)) +
     theme_bw() + 
     theme(axis.text.x = element_text(angle = 70, hjust = 1)) 
 ```
-:::
-:::{.column width='30%'}
+
+##
+
 ![](tx_popsize.png)
-:::
-::: 
 
 ## Example — Population Size Over Time 
 
-:::{.columns}
-:::{.column width='70%'}
 
 ```{r}
 #| eval: false
@@ -125,11 +120,10 @@ ggplot(texas_population_over_time, aes(x = year, y = pop / 1e6)) +
     theme_bw() + 
     theme(axis.text.x = element_text(angle = 70, hjust = 1)) 
 ```
-:::
-:::{.column width='30%'}
+
+## 
+
 ![](tx_popsize.png)
-:::
-::: 
 
 ## Example 2 - Cities by Population Size
 
@@ -186,7 +180,10 @@ ggplot(texas_cities_by_popsize,
     )
 ```
 
+## 
+
 ![](tx_city_popsizes.png)
+
 
 ## Example 3 - Age of different schools at Harvard
 
@@ -228,6 +225,8 @@ ggplot(harvard_school_ages,
     ggtitle("Ages of Schools at Harvard University in 2025") + 
     labs(y = "", x = "", caption = "Data from https://en.wikipedia.org/wiki/Harvard_University")
 ```
+
+## 
 
 ![](harvard_school_ages.png)
 

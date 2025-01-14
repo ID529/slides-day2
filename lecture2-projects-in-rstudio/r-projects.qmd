@@ -1,11 +1,11 @@
 ---
-title: "R Projects"
+title: "<span style='color: white'>R Projects</span>"
 format:
   revealjs:
     theme: [default, r-projects.scss]
 slide-number: true
 title-slide-attributes:
-  data-background-image: "graphics/transition_slides/alex-mesmer.jpg"
+  data-background-image: "https://github.com/ID529/lectures/blob/main/graphics/transition_slides/alex-mesmer.jpg?raw=true"
   data-background-opacity: "60%"
   data-background-color: "black"
 revealjs-plugins:
@@ -14,7 +14,7 @@ execute:
   echo: true
 ---
 
-## morals {data-background-image='transition_slides/daniela-de-gol.jpg' data-background-opacity='30%' data-background-color="black"}
+## morals {data-background-image='https://github.com/ID529/lectures/blob/main/graphics/transition_slides/daniela-de-gol.jpg?raw=true' data-background-opacity='30%' data-background-color="black"}
 
 :::{.fragment .small}
 > <span style='color: white;'>“For every minute spent organizing, an hour is earned.” — (maybe) Benjamin Franklin.</span>
@@ -31,7 +31,7 @@ execute:
 
 :::
 
-## in brief... {data-background-image='transition_slides/daniela-de-gol.jpg' data-background-opacity='30%' data-background-color="black"}
+## in brief... {data-background-image='https://github.com/ID529/lectures/blob/main/graphics/transition_slides/daniela-de-gol.jpg?raw=true' data-background-opacity='30%' data-background-color="black"}
 
 > <span style='color: white;'>An R project enables your work to be bundled in a <span class='carrot'>portable, self-contained folder</span>. Within the project, all the relevant <span class='carrot'>scripts, data files, figures/outputs,</span> and <span class='carrot'>history</span> are stored in sub-folders and importantly - the working directory is the <span class='carrot'>project’s root folder</span>. <br><br>—The Epidemiologist R Handbook </span>
 
@@ -237,7 +237,7 @@ learn more about renv: <https://rstudio.github.io/renv/>
 
 :::{.columns}
 :::{.column}
-<img src="graphics/HoduBubble.png" alt="Hodu with a Bubble">
+<img src="https://github.com/ID529/lectures/blob/main/graphics/HoduBubble.png?raw=true" alt="Hodu with a Bubble">
 :::
 :::{.column}
 `renv` helps you to implement a principle called <span class='carrot'>**encapsulation**</span>:  <br><br>
@@ -277,7 +277,7 @@ docker (containerized) images to support R programming.  <br><br>
 
 (this is quite a bit beyond our course.)
 
-# key takeaways  {data-background-image='graphics/transition_slides/lilzidesigns-2.jpg' data-background-opacity='20%' data-background-color='black'}
+# key takeaways  {data-background-image='https://github.com/ID529/lectures/blob/main/graphics/transition_slides/lilzidesigns-2.jpg?raw=true' data-background-opacity='20%' data-background-color='black'}
 
   - use R Projects to help organize your code
   - use sections within your code to help organize .R files 
@@ -286,7 +286,7 @@ docker (containerized) images to support R programming.  <br><br>
   - use the here package to make working with paths easy
   - use renv and targets to make reproducing your analysis easy
 
-## references {data-background-image='graphics/transition_slides/prateek-pisat.jpg' data-background-opacity='20%' data-background-color='black'}
+## references {data-background-image='https://github.com/ID529/lectures/blob/main/graphics/transition_slides/prateek-pisat.jpg?raw=true' data-background-opacity='20%' data-background-color='black'}
 
   * <https://kdestasio.github.io/post/r_best_practices/>
   * <https://www.rforecology.com/post/organizing-your-r-studio-projects/>

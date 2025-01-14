@@ -817,6 +817,7 @@ install.packages("devtools")
 devtools::install_github("ID529/ID529tutorials")
 
 library(ID529tutorials)
+available_tutorials('ID529tutorials')
 run_tutorial('logic', 'ID529tutorials')
 ```
 :::

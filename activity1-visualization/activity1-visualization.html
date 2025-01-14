@@ -392,7 +392,7 @@
   <div class="reveal">
     <div class="slides">
 
-<section id="title-slide" data-background-color="black" data-background-image="https://images.unsplash.com/photo-1460661419201-fd4cecdf8a8b" data-background-opacity="30%" class="quarto-title-block center">
+<section id="title-slide" data-background-color="black" data-background-image="https://images.unsplash.com/photo-1460661419201-fd4cecdf8a8b" data-background-opacity="70%" class="quarto-title-block center">
   <h1 class="title">Data Visualization Activity</h1>
 
 <div class="quarto-title-authors">
@@ -416,8 +416,6 @@
 </section>
 <section id="example-population-size-over-time" class="slide level2">
 <h2>Example — Population Size Over Time</h2>
-<div class="columns">
-<div class="column" style="width:70%;">
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href=""></a><span class="fu">library</span>(datapasta)</span>
 <span id="cb1-2"><a href=""></a><span class="fu">library</span>(tidyverse)</span>
@@ -457,15 +455,13 @@
 <span id="cb1-36"><a href=""></a>    <span class="fu">theme_bw</span>() <span class="sc">+</span> </span>
 <span id="cb1-37"><a href=""></a>    <span class="fu">theme</span>(<span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">angle =</span> <span class="dv">70</span>, <span class="at">hjust =</span> <span class="dv">1</span>)) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-</div><div class="column" style="width:30%;">
+</section>
+<section id="section" class="slide level2">
+<h2></h2>
 <p><a href="tx_popsize.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1"><img data-src="tx_popsize.png"></a></p>
-</div>
-</div>
 </section>
 <section id="example-population-size-over-time-1" class="slide level2">
 <h2>Example — Population Size Over Time</h2>
-<div class="columns">
-<div class="column" style="width:70%;">
 <div class="cell">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href=""></a><span class="fu">library</span>(datapasta)</span>
 <span id="cb2-2"><a href=""></a><span class="fu">library</span>(tidyverse)</span>
@@ -505,13 +501,13 @@
 <span id="cb2-36"><a href=""></a>    <span class="fu">theme_bw</span>() <span class="sc">+</span> </span>
 <span id="cb2-37"><a href=""></a>    <span class="fu">theme</span>(<span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">angle =</span> <span class="dv">70</span>, <span class="at">hjust =</span> <span class="dv">1</span>)) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-</div><div class="column" style="width:30%;">
-<p><a href="tx_popsize.png" class="lightbox" data-gallery="quarto-lightbox-gallery-2"><img data-src="tx_popsize.png"></a></p>
-</div>
-</div>
 </section>
-<section id="example-2" class="slide level2">
-<h2>Example 2</h2>
+<section id="section-1" class="slide level2">
+<h2></h2>
+<p><a href="tx_popsize.png" class="lightbox" data-gallery="quarto-lightbox-gallery-2"><img data-src="tx_popsize.png"></a></p>
+</section>
+<section id="example-2---cities-by-population-size" class="slide level2">
+<h2>Example 2 - Cities by Population Size</h2>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href=""></a>texas_cities_by_popsize <span class="ot">&lt;-</span> tibble<span class="sc">::</span><span class="fu">tribble</span>(</span>
 <span id="cb3-2"><a href=""></a>        <span class="sc">~</span>city_name,  <span class="sc">~</span>popsize,</span>
@@ -562,10 +558,13 @@
 <span id="cb3-47"><a href=""></a>        <span class="at">subtitle =</span> <span class="st">"2022 U.S. Census Bureau Estimate"</span></span>
 <span id="cb3-48"><a href=""></a>    )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
+</section>
+<section id="section-2" class="slide level2">
+<h2></h2>
 <p><a href="tx_city_popsizes.png" class="lightbox" data-gallery="quarto-lightbox-gallery-3"><img data-src="tx_city_popsizes.png"></a></p>
 </section>
-<section id="example-3" class="slide level2">
-<h2>Example 3</h2>
+<section id="example-3---age-of-different-schools-at-harvard" class="slide level2">
+<h2>Example 3 - Age of different schools at Harvard</h2>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href=""></a>harvard_school_ages <span class="ot">&lt;-</span> tibble<span class="sc">::</span><span class="fu">tribble</span>(</span>
 <span id="cb4-2"><a href=""></a>                             <span class="sc">~</span>school, <span class="sc">~</span>founding_year,</span>
@@ -602,6 +601,9 @@
 <span id="cb4-33"><a href=""></a>    <span class="fu">ggtitle</span>(<span class="st">"Ages of Schools at Harvard University in 2025"</span>) <span class="sc">+</span> </span>
 <span id="cb4-34"><a href=""></a>    <span class="fu">labs</span>(<span class="at">y =</span> <span class="st">""</span>, <span class="at">x =</span> <span class="st">""</span>, <span class="at">caption =</span> <span class="st">"Data from https://en.wikipedia.org/wiki/Harvard_University"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
+</section>
+<section id="section-3" class="slide level2">
+<h2></h2>
 <p><a href="harvard_school_ages.png" class="lightbox" data-gallery="quarto-lightbox-gallery-4"><img data-src="harvard_school_ages.png"></a></p>
 <div class="quarto-auto-generated-content">
 <div class="footer footer-default">
@@ -1011,7 +1013,7 @@
       }
     });
     </script>
-    <script>var lightboxQuarto = GLightbox({"selector":".lightbox","openEffect":"zoom","closeEffect":"zoom","descPosition":"bottom","loop":false});
+    <script>var lightboxQuarto = GLightbox({"descPosition":"bottom","openEffect":"zoom","selector":".lightbox","loop":false,"closeEffect":"zoom"});
     window.onload = () => {
       lightboxQuarto.on('slide_before_load', (data) => {
         const { slideIndex, slideNode, slideConfig, player, trigger } = data;

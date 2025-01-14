@@ -1,13 +1,13 @@
 ---
-title: "Data Visualization with ggplot2"
+title: "<span style='color: white'>Data Visualization with ggplot2</span>"
 format:
   revealjs:
     theme: [default, ggplot2.scss]
 slide-number: true
 title-slide-attributes:
-  data-background-image: "graphics/transition_slides/conny-schneider.jpg"
+  data-background-image: "https://github.com/ID529/lectures/blob/main/graphics/transition_slides/conny-schneider.jpg?raw=true"
   data-background-opacity: "40%"
-  data-background-color: "white"
+  data-background-color: "black"
 revealjs-plugins:
   - pointer
 execute: 
@@ -617,7 +617,7 @@ ggplot(penguins, aes(x = bill_length_mm, y = bill_depth_mm)) +
 
 :::{.columns}
 :::{.column}
-<img src="graphics/HoduGreen.png" alt='Hodu tip!'>
+<img src="https://github.com/ID529/lectures/blob/main/graphics/HoduGreen.png?raw=true" alt='Hodu tip!'>
 :::
 
 :::{.column}
@@ -687,7 +687,7 @@ ggplot(df, aes(x = x, y = y)) +
 
 :::{.columns}
 :::{.column}
-<img src="graphics/HoduTip.png" alt='Hodu tip!'>
+<img src="https://github.com/ID529/lectures/blob/main/graphics/HoduTip.png?raw=true" alt='Hodu tip!'>
 :::
 :::{.column}
 another handy way to deal with overplotting is
@@ -952,7 +952,7 @@ ggsave(filename = "your_filename.png",
 
 :::{.columns}
 :::{.column}
-<img src="graphics/HoduPink.png" alt='Hodu tip!'>
+<img src="https://github.com/ID529/lectures/blob/main/graphics/HoduPink.png?raw=true" alt='Hodu tip!'>
 :::
 
 :::{.column}
