@@ -8,7 +8,7 @@
 <link href="reading-in-data_files/libs/quarto-html/light-border.css" rel="stylesheet">
 <link href="reading-in-data_files/libs/quarto-html/quarto-html.min.css" rel="stylesheet" data-mode="light">
 <link href="reading-in-data_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.3.353">
+  <meta name="generator" content="quarto-1.5.57">
 
   <title>reading-in-data</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -30,7 +30,7 @@
     }
     /* CSS for syntax highlighting */
     pre > code.sourceCode { white-space: pre; position: relative; }
-    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span { line-height: 1.25; }
     pre > code.sourceCode > span:empty { height: 1.2em; }
     .sourceCode { overflow: visible; }
     code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -41,7 +41,7 @@
     }
     @media print {
     pre > code.sourceCode { white-space: pre-wrap; }
-    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
     }
     pre.numberSource code
       { counter-reset: source-line 0; }
@@ -69,7 +69,7 @@
     code span.at { color: #657422; } /* Attribute */
     code span.bn { color: #ad0000; } /* BaseN */
     code span.bu { } /* BuiltIn */
-    code span.cf { color: #003b4f; } /* ControlFlow */
+    code span.cf { color: #003b4f; font-weight: bold; } /* ControlFlow */
     code span.ch { color: #20794d; } /* Char */
     code span.cn { color: #8f5902; } /* Constant */
     code span.co { color: #5e5e5e; } /* Comment */
@@ -83,7 +83,7 @@
     code span.fu { color: #4758ab; } /* Function */
     code span.im { color: #00769e; } /* Import */
     code span.in { color: #5e5e5e; } /* Information */
-    code span.kw { color: #003b4f; } /* Keyword */
+    code span.kw { color: #003b4f; font-weight: bold; } /* Keyword */
     code span.op { color: #5e5e5e; } /* Operator */
     code span.ot { color: #003b4f; } /* Other */
     code span.pp { color: #ad0000; } /* Preprocessor */
@@ -220,7 +220,8 @@
   }
 
   .callout.callout-titled .callout-body > .callout-content > :last-child {
-    margin-bottom: 0.5rem;
+    padding-bottom: 0.5rem;
+    margin-bottom: 0;
   }
 
   .callout.callout-titled .callout-icon::before {
@@ -396,7 +397,7 @@
 <p>ID 529: Data Management and Analytic Workflows in R</p>
 </div>
 <div class="white-12-pt">
-<p>Dean Marengi | Tuesday, January 14<sup>th</sup>, 2025</p>
+<p>Dean Marengi | Tuesday, January 13<sup>th</sup>, 2026</p>
 </div>
 </section>
 <section id="motivation" class="slide level2 smaller">
@@ -493,8 +494,7 @@
 </ul></li>
 </ul></li>
 </ul>
-</div>
-</div>
+</div></div>
 <p><img data-src="images/read-flat-files.png" class="absolute" style="bottom: 120px; right: 0px; height: 60%; "></p>
 </section>
 <section id="excel-files" class="slide level2 smaller">
@@ -636,42 +636,41 @@
 </ul>
 </div><div class="column" style="width:40%;">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a><span class="fu">read.table</span>(</span>
-<span id="cb1-2"><a href="#cb1-2"></a>  file,</span>
-<span id="cb1-3"><a href="#cb1-3"></a>  <span class="at">header =</span> <span class="cn">FALSE</span>,</span>
-<span id="cb1-4"><a href="#cb1-4"></a>  <span class="at">sep =</span> <span class="st">""</span>,</span>
-<span id="cb1-5"><a href="#cb1-5"></a>  <span class="at">quote =</span> <span class="st">"</span><span class="sc">\"</span><span class="st">'"</span>,</span>
-<span id="cb1-6"><a href="#cb1-6"></a>  <span class="at">dec =</span> <span class="st">"."</span>,</span>
-<span id="cb1-7"><a href="#cb1-7"></a>  <span class="at">numerals =</span> <span class="fu">c</span>(<span class="st">"no.loss"</span>),</span>
-<span id="cb1-8"><a href="#cb1-8"></a>  row.names,</span>
-<span id="cb1-9"><a href="#cb1-9"></a>  col.names,</span>
-<span id="cb1-10"><a href="#cb1-10"></a>  <span class="at">as.is =</span> <span class="sc">!</span>stringsAsFactors,</span>
-<span id="cb1-11"><a href="#cb1-11"></a>  <span class="at">na.strings =</span> <span class="st">"NA"</span>,</span>
-<span id="cb1-12"><a href="#cb1-12"></a>  <span class="at">colClasses =</span> <span class="cn">NA</span>,</span>
-<span id="cb1-13"><a href="#cb1-13"></a>  <span class="at">nrows =</span> <span class="sc">-</span><span class="dv">1</span>,</span>
-<span id="cb1-14"><a href="#cb1-14"></a>  <span class="at">skip =</span> <span class="dv">0</span>,</span>
-<span id="cb1-15"><a href="#cb1-15"></a>  <span class="at">check.names =</span> <span class="cn">TRUE</span>,</span>
-<span id="cb1-16"><a href="#cb1-16"></a>  <span class="at">fill =</span> <span class="sc">!</span>blank.lines.skip,</span>
-<span id="cb1-17"><a href="#cb1-17"></a>  <span class="at">strip.white =</span> <span class="cn">FALSE</span>,</span>
-<span id="cb1-18"><a href="#cb1-18"></a>  <span class="at">blank.lines.skip =</span> <span class="cn">TRUE</span>,</span>
-<span id="cb1-19"><a href="#cb1-19"></a>  <span class="at">comment.char =</span> <span class="st">"#"</span>,</span>
-<span id="cb1-20"><a href="#cb1-20"></a>  <span class="at">allowEscapes =</span> <span class="cn">FALSE</span>,</span>
-<span id="cb1-21"><a href="#cb1-21"></a>  <span class="at">stringsAsFactors =</span> <span class="cn">FALSE</span>,</span>
-<span id="cb1-22"><a href="#cb1-22"></a>  <span class="at">fileEncoding =</span> <span class="st">""</span></span>
-<span id="cb1-23"><a href="#cb1-23"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href=""></a><span class="fu">read.table</span>(</span>
+<span id="cb1-2"><a href=""></a>  file,</span>
+<span id="cb1-3"><a href=""></a>  <span class="at">header =</span> <span class="cn">FALSE</span>,</span>
+<span id="cb1-4"><a href=""></a>  <span class="at">sep =</span> <span class="st">""</span>,</span>
+<span id="cb1-5"><a href=""></a>  <span class="at">quote =</span> <span class="st">"</span><span class="sc">\"</span><span class="st">'"</span>,</span>
+<span id="cb1-6"><a href=""></a>  <span class="at">dec =</span> <span class="st">"."</span>,</span>
+<span id="cb1-7"><a href=""></a>  <span class="at">numerals =</span> <span class="fu">c</span>(<span class="st">"no.loss"</span>),</span>
+<span id="cb1-8"><a href=""></a>  row.names,</span>
+<span id="cb1-9"><a href=""></a>  col.names,</span>
+<span id="cb1-10"><a href=""></a>  <span class="at">as.is =</span> <span class="sc">!</span>stringsAsFactors,</span>
+<span id="cb1-11"><a href=""></a>  <span class="at">na.strings =</span> <span class="st">"NA"</span>,</span>
+<span id="cb1-12"><a href=""></a>  <span class="at">colClasses =</span> <span class="cn">NA</span>,</span>
+<span id="cb1-13"><a href=""></a>  <span class="at">nrows =</span> <span class="sc">-</span><span class="dv">1</span>,</span>
+<span id="cb1-14"><a href=""></a>  <span class="at">skip =</span> <span class="dv">0</span>,</span>
+<span id="cb1-15"><a href=""></a>  <span class="at">check.names =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb1-16"><a href=""></a>  <span class="at">fill =</span> <span class="sc">!</span>blank.lines.skip,</span>
+<span id="cb1-17"><a href=""></a>  <span class="at">strip.white =</span> <span class="cn">FALSE</span>,</span>
+<span id="cb1-18"><a href=""></a>  <span class="at">blank.lines.skip =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb1-19"><a href=""></a>  <span class="at">comment.char =</span> <span class="st">"#"</span>,</span>
+<span id="cb1-20"><a href=""></a>  <span class="at">allowEscapes =</span> <span class="cn">FALSE</span>,</span>
+<span id="cb1-21"><a href=""></a>  <span class="at">stringsAsFactors =</span> <span class="cn">FALSE</span>,</span>
+<span id="cb1-22"><a href=""></a>  <span class="at">fileEncoding =</span> <span class="st">""</span></span>
+<span id="cb1-23"><a href=""></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-</div>
-</div>
+</div></div>
 <p><img data-src="images/logo-base-r.png" class="absolute" style="bottom: 1px; right: 0px; height: 25%; "></p>
 </section>
 <section id="example-read.csv" class="slide level2 smaller">
 <h2>Example: <code>read.csv()</code></h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a><span class="co"># Read in the data</span></span>
-<span id="cb2-2"><a href="#cb2-2"></a>data <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"data/cvdstudy.csv"</span>)</span>
-<span id="cb2-3"><a href="#cb2-3"></a></span>
-<span id="cb2-4"><a href="#cb2-4"></a><span class="co"># Print</span></span>
-<span id="cb2-5"><a href="#cb2-5"></a>data</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href=""></a><span class="co"># Read in the data</span></span>
+<span id="cb2-2"><a href=""></a>data <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"data/cvdstudy.csv"</span>)</span>
+<span id="cb2-3"><a href=""></a></span>
+<span id="cb2-4"><a href=""></a><span class="co"># Print</span></span>
+<span id="cb2-5"><a href=""></a>data</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>        id   survdate age edu smoke cigs   sbp   dbp chol glucose
 1    32955 2019-11-04  54   2     1   15 230.0 110.0  262      97
@@ -3111,31 +3110,30 @@
 </ul>
 </div><div class="column" style="width:40%;">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a><span class="fu">read_csv</span>(</span>
-<span id="cb4-2"><a href="#cb4-2"></a>  file,</span>
-<span id="cb4-3"><a href="#cb4-3"></a>  <span class="at">col_names =</span> <span class="cn">TRUE</span>,</span>
-<span id="cb4-4"><a href="#cb4-4"></a>  <span class="at">col_types =</span> <span class="cn">NULL</span>,</span>
-<span id="cb4-5"><a href="#cb4-5"></a>  <span class="at">col_select =</span> <span class="cn">NULL</span>,</span>
-<span id="cb4-6"><a href="#cb4-6"></a>  <span class="at">id =</span> <span class="cn">NULL</span>,</span>
-<span id="cb4-7"><a href="#cb4-7"></a>  <span class="at">locale =</span> <span class="fu">default_locale</span>(),</span>
-<span id="cb4-8"><a href="#cb4-8"></a>  <span class="at">na =</span> <span class="fu">c</span>(<span class="st">""</span>, <span class="st">"NA"</span>),</span>
-<span id="cb4-9"><a href="#cb4-9"></a>  <span class="at">quoted_na =</span> <span class="cn">TRUE</span>,</span>
-<span id="cb4-10"><a href="#cb4-10"></a>  <span class="at">quote =</span> <span class="st">"</span><span class="sc">\"</span><span class="st">"</span>,</span>
-<span id="cb4-11"><a href="#cb4-11"></a>  <span class="at">comment =</span> <span class="st">""</span>,</span>
-<span id="cb4-12"><a href="#cb4-12"></a>  <span class="at">trim_ws =</span> <span class="cn">TRUE</span>,</span>
-<span id="cb4-13"><a href="#cb4-13"></a>  <span class="at">skip =</span> <span class="dv">0</span>,</span>
-<span id="cb4-14"><a href="#cb4-14"></a>  <span class="at">n_max =</span> <span class="cn">Inf</span>,</span>
-<span id="cb4-15"><a href="#cb4-15"></a>  <span class="at">guess_max =</span> <span class="fu">min</span>(<span class="dv">1000</span>, n_max),</span>
-<span id="cb4-16"><a href="#cb4-16"></a>  <span class="at">name_repair =</span> <span class="st">"unique"</span>,</span>
-<span id="cb4-17"><a href="#cb4-17"></a>  <span class="at">num_threads =</span> <span class="fu">readr_threads</span>(),</span>
-<span id="cb4-18"><a href="#cb4-18"></a>  <span class="at">progress =</span> <span class="fu">show_progress</span>(),</span>
-<span id="cb4-19"><a href="#cb4-19"></a>  <span class="at">show_col_types =</span> <span class="fu">should_show_types</span>(),</span>
-<span id="cb4-20"><a href="#cb4-20"></a>  <span class="at">skip_empty_rows =</span> <span class="cn">TRUE</span>,</span>
-<span id="cb4-21"><a href="#cb4-21"></a>  <span class="at">lazy =</span> <span class="fu">should_read_lazy</span>()</span>
-<span id="cb4-22"><a href="#cb4-22"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href=""></a><span class="fu">read_csv</span>(</span>
+<span id="cb4-2"><a href=""></a>  file,</span>
+<span id="cb4-3"><a href=""></a>  <span class="at">col_names =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb4-4"><a href=""></a>  <span class="at">col_types =</span> <span class="cn">NULL</span>,</span>
+<span id="cb4-5"><a href=""></a>  <span class="at">col_select =</span> <span class="cn">NULL</span>,</span>
+<span id="cb4-6"><a href=""></a>  <span class="at">id =</span> <span class="cn">NULL</span>,</span>
+<span id="cb4-7"><a href=""></a>  <span class="at">locale =</span> <span class="fu">default_locale</span>(),</span>
+<span id="cb4-8"><a href=""></a>  <span class="at">na =</span> <span class="fu">c</span>(<span class="st">""</span>, <span class="st">"NA"</span>),</span>
+<span id="cb4-9"><a href=""></a>  <span class="at">quoted_na =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb4-10"><a href=""></a>  <span class="at">quote =</span> <span class="st">"</span><span class="sc">\"</span><span class="st">"</span>,</span>
+<span id="cb4-11"><a href=""></a>  <span class="at">comment =</span> <span class="st">""</span>,</span>
+<span id="cb4-12"><a href=""></a>  <span class="at">trim_ws =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb4-13"><a href=""></a>  <span class="at">skip =</span> <span class="dv">0</span>,</span>
+<span id="cb4-14"><a href=""></a>  <span class="at">n_max =</span> <span class="cn">Inf</span>,</span>
+<span id="cb4-15"><a href=""></a>  <span class="at">guess_max =</span> <span class="fu">min</span>(<span class="dv">1000</span>, n_max),</span>
+<span id="cb4-16"><a href=""></a>  <span class="at">name_repair =</span> <span class="st">"unique"</span>,</span>
+<span id="cb4-17"><a href=""></a>  <span class="at">num_threads =</span> <span class="fu">readr_threads</span>(),</span>
+<span id="cb4-18"><a href=""></a>  <span class="at">progress =</span> <span class="fu">show_progress</span>(),</span>
+<span id="cb4-19"><a href=""></a>  <span class="at">show_col_types =</span> <span class="fu">should_show_types</span>(),</span>
+<span id="cb4-20"><a href=""></a>  <span class="at">skip_empty_rows =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb4-21"><a href=""></a>  <span class="at">lazy =</span> <span class="fu">should_read_lazy</span>()</span>
+<span id="cb4-22"><a href=""></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-</div>
-</div>
+</div></div>
 
 <aside><div>
 <p><a href="https://readr.tidyverse.org/" class="uri">https://readr.tidyverse.org/</a></p>
@@ -3143,14 +3141,14 @@
 <section id="example-read_csv" class="slide level2 smaller">
 <h2>Example: <code>read_csv()</code></h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a><span class="co"># Load readr package (not necessary if you've loaded the tidyverse)</span></span>
-<span id="cb5-2"><a href="#cb5-2"></a><span class="fu">library</span>(readr)</span>
-<span id="cb5-3"><a href="#cb5-3"></a></span>
-<span id="cb5-4"><a href="#cb5-4"></a><span class="co"># Read in data, which is stored in a csv file </span></span>
-<span id="cb5-5"><a href="#cb5-5"></a>data <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"data/cvdstudy.csv"</span>, <span class="at">na =</span> <span class="st">""</span>)</span>
-<span id="cb5-6"><a href="#cb5-6"></a></span>
-<span id="cb5-7"><a href="#cb5-7"></a><span class="co"># Look at the data</span></span>
-<span id="cb5-8"><a href="#cb5-8"></a>data</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href=""></a><span class="co"># Load readr package (not necessary if you've loaded the tidyverse)</span></span>
+<span id="cb5-2"><a href=""></a><span class="fu">library</span>(readr)</span>
+<span id="cb5-3"><a href=""></a></span>
+<span id="cb5-4"><a href=""></a><span class="co"># Read in data, which is stored in a csv file </span></span>
+<span id="cb5-5"><a href=""></a>data <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"data/cvdstudy.csv"</span>, <span class="at">na =</span> <span class="st">""</span>)</span>
+<span id="cb5-6"><a href=""></a></span>
+<span id="cb5-7"><a href=""></a><span class="co"># Look at the data</span></span>
+<span id="cb5-8"><a href=""></a>data</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 2,401 × 10
       id survdate     age   edu smoke  cigs   sbp   dbp  chol glucose
@@ -3177,20 +3175,20 @@
 <section id="example-read_csv-1" class="slide level2 smaller">
 <h2>Example: <code>read_csv()</code></h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1"></a><span class="co"># Load readr package (not necessary if you've loaded the tidyverse)</span></span>
-<span id="cb7-2"><a href="#cb7-2"></a><span class="fu">library</span>(readr)</span>
-<span id="cb7-3"><a href="#cb7-3"></a></span>
-<span id="cb7-4"><a href="#cb7-4"></a><span class="co"># Read in data and specify data types for specific columns </span></span>
-<span id="cb7-5"><a href="#cb7-5"></a>data <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"data/cvdstudy.csv"</span>, <span class="at">na =</span> <span class="st">""</span>,</span>
-<span id="cb7-6"><a href="#cb7-6"></a>                 <span class="at">col_types =</span> <span class="fu">cols</span>(</span>
-<span id="cb7-7"><a href="#cb7-7"></a>                   <span class="at">id =</span> <span class="fu">col_character</span>(),</span>
-<span id="cb7-8"><a href="#cb7-8"></a>                   <span class="at">smoke =</span> <span class="fu">col_factor</span>(<span class="at">levels =</span> <span class="fu">c</span>(<span class="st">"0"</span>, <span class="st">"1"</span>)),</span>
-<span id="cb7-9"><a href="#cb7-9"></a>                   <span class="at">edu =</span> <span class="fu">col_factor</span>(<span class="at">levels =</span> <span class="fu">c</span>(<span class="st">"1"</span>, <span class="st">"2"</span>, <span class="st">"3"</span>, <span class="st">"4"</span>))</span>
-<span id="cb7-10"><a href="#cb7-10"></a>                   )</span>
-<span id="cb7-11"><a href="#cb7-11"></a>                 )</span>
-<span id="cb7-12"><a href="#cb7-12"></a></span>
-<span id="cb7-13"><a href="#cb7-13"></a><span class="co"># Look at the data</span></span>
-<span id="cb7-14"><a href="#cb7-14"></a>data</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href=""></a><span class="co"># Load readr package (not necessary if you've loaded the tidyverse)</span></span>
+<span id="cb7-2"><a href=""></a><span class="fu">library</span>(readr)</span>
+<span id="cb7-3"><a href=""></a></span>
+<span id="cb7-4"><a href=""></a><span class="co"># Read in data and specify data types for specific columns </span></span>
+<span id="cb7-5"><a href=""></a>data <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"data/cvdstudy.csv"</span>, <span class="at">na =</span> <span class="st">""</span>,</span>
+<span id="cb7-6"><a href=""></a>                 <span class="at">col_types =</span> <span class="fu">cols</span>(</span>
+<span id="cb7-7"><a href=""></a>                   <span class="at">id =</span> <span class="fu">col_character</span>(),</span>
+<span id="cb7-8"><a href=""></a>                   <span class="at">smoke =</span> <span class="fu">col_factor</span>(<span class="at">levels =</span> <span class="fu">c</span>(<span class="st">"0"</span>, <span class="st">"1"</span>)),</span>
+<span id="cb7-9"><a href=""></a>                   <span class="at">edu =</span> <span class="fu">col_factor</span>(<span class="at">levels =</span> <span class="fu">c</span>(<span class="st">"1"</span>, <span class="st">"2"</span>, <span class="st">"3"</span>, <span class="st">"4"</span>))</span>
+<span id="cb7-10"><a href=""></a>                   )</span>
+<span id="cb7-11"><a href=""></a>                 )</span>
+<span id="cb7-12"><a href=""></a></span>
+<span id="cb7-13"><a href=""></a><span class="co"># Look at the data</span></span>
+<span id="cb7-14"><a href=""></a>data</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 2,401 × 10
    id    survdate     age edu   smoke  cigs   sbp   dbp  chol glucose
@@ -3216,17 +3214,17 @@
 <section id="example-read_delim" class="slide level2 smaller">
 <h2>Example: <code>read_delim()</code></h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1"></a><span class="co"># Read in data and specify data types for specific columns and the delimiter used in the file</span></span>
-<span id="cb9-2"><a href="#cb9-2"></a>data <span class="ot">&lt;-</span> <span class="fu">read_delim</span>(<span class="st">"data/cvdstudy.txt"</span>, <span class="at">delim =</span> <span class="st">"</span><span class="sc">\t</span><span class="st">"</span>, <span class="at">na =</span> <span class="fu">c</span>(<span class="st">"N/A"</span>, <span class="st">"NA"</span>),</span>
-<span id="cb9-3"><a href="#cb9-3"></a>                   <span class="at">col_types =</span> <span class="fu">cols</span>(</span>
-<span id="cb9-4"><a href="#cb9-4"></a>                     <span class="at">id =</span> <span class="fu">col_character</span>(),</span>
-<span id="cb9-5"><a href="#cb9-5"></a>                     <span class="at">smoke =</span> <span class="fu">col_factor</span>(<span class="at">levels =</span> <span class="fu">c</span>(<span class="st">"0"</span>, <span class="st">"1"</span>)),</span>
-<span id="cb9-6"><a href="#cb9-6"></a>                     <span class="at">edu =</span> <span class="fu">col_factor</span>(<span class="at">levels =</span> <span class="fu">c</span>(<span class="st">"1"</span>, <span class="st">"2"</span>, <span class="st">"3"</span>, <span class="st">"4"</span>))</span>
-<span id="cb9-7"><a href="#cb9-7"></a>                   )</span>
-<span id="cb9-8"><a href="#cb9-8"></a>                 )</span>
-<span id="cb9-9"><a href="#cb9-9"></a></span>
-<span id="cb9-10"><a href="#cb9-10"></a><span class="co"># Look at the data</span></span>
-<span id="cb9-11"><a href="#cb9-11"></a>data</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href=""></a><span class="co"># Read in data and specify data types for specific columns and the delimiter used in the file</span></span>
+<span id="cb9-2"><a href=""></a>data <span class="ot">&lt;-</span> <span class="fu">read_delim</span>(<span class="st">"data/cvdstudy.txt"</span>, <span class="at">delim =</span> <span class="st">"</span><span class="sc">\t</span><span class="st">"</span>, <span class="at">na =</span> <span class="fu">c</span>(<span class="st">"N/A"</span>, <span class="st">"NA"</span>),</span>
+<span id="cb9-3"><a href=""></a>                   <span class="at">col_types =</span> <span class="fu">cols</span>(</span>
+<span id="cb9-4"><a href=""></a>                     <span class="at">id =</span> <span class="fu">col_character</span>(),</span>
+<span id="cb9-5"><a href=""></a>                     <span class="at">smoke =</span> <span class="fu">col_factor</span>(<span class="at">levels =</span> <span class="fu">c</span>(<span class="st">"0"</span>, <span class="st">"1"</span>)),</span>
+<span id="cb9-6"><a href=""></a>                     <span class="at">edu =</span> <span class="fu">col_factor</span>(<span class="at">levels =</span> <span class="fu">c</span>(<span class="st">"1"</span>, <span class="st">"2"</span>, <span class="st">"3"</span>, <span class="st">"4"</span>))</span>
+<span id="cb9-7"><a href=""></a>                   )</span>
+<span id="cb9-8"><a href=""></a>                 )</span>
+<span id="cb9-9"><a href=""></a></span>
+<span id="cb9-10"><a href=""></a><span class="co"># Look at the data</span></span>
+<span id="cb9-11"><a href=""></a>data</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 2,401 × 10
    id    survdate     age edu   smoke  cigs   sbp   dbp  chol glucose
@@ -3283,23 +3281,22 @@
 </ul>
 </div><div class="column" style="width:40%;">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1"></a><span class="fu">read_xlsx</span>(</span>
-<span id="cb11-2"><a href="#cb11-2"></a>  path,</span>
-<span id="cb11-3"><a href="#cb11-3"></a>  <span class="at">sheet =</span> <span class="cn">NULL</span>,</span>
-<span id="cb11-4"><a href="#cb11-4"></a>  <span class="at">range =</span> <span class="cn">NULL</span>,</span>
-<span id="cb11-5"><a href="#cb11-5"></a>  <span class="at">col_names =</span> <span class="cn">TRUE</span>,</span>
-<span id="cb11-6"><a href="#cb11-6"></a>  <span class="at">col_types =</span> <span class="cn">NULL</span>,</span>
-<span id="cb11-7"><a href="#cb11-7"></a>  <span class="at">na =</span> <span class="st">""</span>,</span>
-<span id="cb11-8"><a href="#cb11-8"></a>  <span class="at">trim_ws =</span> <span class="cn">TRUE</span>,</span>
-<span id="cb11-9"><a href="#cb11-9"></a>  <span class="at">skip =</span> <span class="dv">0</span>,</span>
-<span id="cb11-10"><a href="#cb11-10"></a>  <span class="at">n_max =</span> <span class="cn">Inf</span>,</span>
-<span id="cb11-11"><a href="#cb11-11"></a>  <span class="at">guess_max =</span> <span class="fu">min</span>(<span class="dv">1000</span>, n_max),</span>
-<span id="cb11-12"><a href="#cb11-12"></a>  <span class="at">progress =</span> <span class="fu">readxl_progress</span>(),</span>
-<span id="cb11-13"><a href="#cb11-13"></a>  <span class="at">.name_repair =</span> <span class="st">"unique"</span></span>
-<span id="cb11-14"><a href="#cb11-14"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href=""></a><span class="fu">read_xlsx</span>(</span>
+<span id="cb11-2"><a href=""></a>  path,</span>
+<span id="cb11-3"><a href=""></a>  <span class="at">sheet =</span> <span class="cn">NULL</span>,</span>
+<span id="cb11-4"><a href=""></a>  <span class="at">range =</span> <span class="cn">NULL</span>,</span>
+<span id="cb11-5"><a href=""></a>  <span class="at">col_names =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb11-6"><a href=""></a>  <span class="at">col_types =</span> <span class="cn">NULL</span>,</span>
+<span id="cb11-7"><a href=""></a>  <span class="at">na =</span> <span class="st">""</span>,</span>
+<span id="cb11-8"><a href=""></a>  <span class="at">trim_ws =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb11-9"><a href=""></a>  <span class="at">skip =</span> <span class="dv">0</span>,</span>
+<span id="cb11-10"><a href=""></a>  <span class="at">n_max =</span> <span class="cn">Inf</span>,</span>
+<span id="cb11-11"><a href=""></a>  <span class="at">guess_max =</span> <span class="fu">min</span>(<span class="dv">1000</span>, n_max),</span>
+<span id="cb11-12"><a href=""></a>  <span class="at">progress =</span> <span class="fu">readxl_progress</span>(),</span>
+<span id="cb11-13"><a href=""></a>  <span class="at">.name_repair =</span> <span class="st">"unique"</span></span>
+<span id="cb11-14"><a href=""></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-</div>
-</div>
+</div></div>
 
 <aside><div>
 <p><a href="https://readxl.tidyverse.org/" class="uri">https://readxl.tidyverse.org/</a></p>
@@ -3307,14 +3304,14 @@
 <section id="example-read_xlsx" class="slide level2 smaller">
 <h2>Example: <code>read_xlsx()</code></h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1"></a><span class="co"># Load readxl package</span></span>
-<span id="cb12-2"><a href="#cb12-2"></a><span class="fu">library</span>(readxl)</span>
-<span id="cb12-3"><a href="#cb12-3"></a></span>
-<span id="cb12-4"><a href="#cb12-4"></a><span class="co"># Read in the xlsx file, which we know is located on sheet 2 inside of the file</span></span>
-<span id="cb12-5"><a href="#cb12-5"></a>data <span class="ot">&lt;-</span> <span class="fu">read_xlsx</span>(<span class="st">"data/cvdstudy.xlsx"</span>, <span class="at">sheet =</span> <span class="dv">2</span>, <span class="at">na =</span> <span class="st">""</span>)</span>
-<span id="cb12-6"><a href="#cb12-6"></a></span>
-<span id="cb12-7"><a href="#cb12-7"></a><span class="co"># Look at the data</span></span>
-<span id="cb12-8"><a href="#cb12-8"></a>data</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href=""></a><span class="co"># Load readxl package</span></span>
+<span id="cb12-2"><a href=""></a><span class="fu">library</span>(readxl)</span>
+<span id="cb12-3"><a href=""></a></span>
+<span id="cb12-4"><a href=""></a><span class="co"># Read in the xlsx file, which we know is located on sheet 2 inside of the file</span></span>
+<span id="cb12-5"><a href=""></a>data <span class="ot">&lt;-</span> <span class="fu">read_xlsx</span>(<span class="st">"data/cvdstudy.xlsx"</span>, <span class="at">sheet =</span> <span class="dv">2</span>, <span class="at">na =</span> <span class="st">""</span>)</span>
+<span id="cb12-6"><a href=""></a></span>
+<span id="cb12-7"><a href=""></a><span class="co"># Look at the data</span></span>
+<span id="cb12-8"><a href=""></a>data</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 2,411 × 10
    `Summary statistics` ...2     ...3  ...4  ...5  ...6  ...7  ...8  ...9  ...10
@@ -3340,21 +3337,21 @@
 <section id="example-read_xlsx-1" class="slide level2 smaller">
 <h2>Example: <code>read_xlsx()</code></h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1"></a><span class="co"># Create a vector of column types (limited to skip, guess, logical, numeric, date, text or list)</span></span>
-<span id="cb14-2"><a href="#cb14-2"></a>col_types <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"text"</span>, <span class="st">"date"</span>, <span class="st">"numeric"</span>, <span class="st">"guess"</span>, <span class="st">"guess"</span>, <span class="st">"numeric"</span>, </span>
-<span id="cb14-3"><a href="#cb14-3"></a>               <span class="st">"numeric"</span>, <span class="st">"numeric"</span>, <span class="st">"numeric"</span>, <span class="st">"numeric"</span>)</span>
-<span id="cb14-4"><a href="#cb14-4"></a></span>
-<span id="cb14-5"><a href="#cb14-5"></a><span class="co"># Read in the xlsx file, which we know is located on sheet 2 inside of the file</span></span>
-<span id="cb14-6"><a href="#cb14-6"></a>data <span class="ot">&lt;-</span> <span class="fu">read_xlsx</span>(</span>
-<span id="cb14-7"><a href="#cb14-7"></a>  <span class="st">"data/cvdstudy.xlsx"</span>,</span>
-<span id="cb14-8"><a href="#cb14-8"></a>  <span class="at">sheet =</span> <span class="dv">2</span>,</span>
-<span id="cb14-9"><a href="#cb14-9"></a>  <span class="at">skip =</span> <span class="dv">10</span>,</span>
-<span id="cb14-10"><a href="#cb14-10"></a>  <span class="at">col_names =</span> <span class="cn">TRUE</span>,</span>
-<span id="cb14-11"><a href="#cb14-11"></a>  <span class="at">col_types =</span> col_types</span>
-<span id="cb14-12"><a href="#cb14-12"></a>)</span>
-<span id="cb14-13"><a href="#cb14-13"></a></span>
-<span id="cb14-14"><a href="#cb14-14"></a><span class="co"># Look at the data</span></span>
-<span id="cb14-15"><a href="#cb14-15"></a>data</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href=""></a><span class="co"># Create a vector of column types (limited to skip, guess, logical, numeric, date, text or list)</span></span>
+<span id="cb14-2"><a href=""></a>col_types <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"text"</span>, <span class="st">"date"</span>, <span class="st">"numeric"</span>, <span class="st">"guess"</span>, <span class="st">"guess"</span>, <span class="st">"numeric"</span>, </span>
+<span id="cb14-3"><a href=""></a>               <span class="st">"numeric"</span>, <span class="st">"numeric"</span>, <span class="st">"numeric"</span>, <span class="st">"numeric"</span>)</span>
+<span id="cb14-4"><a href=""></a></span>
+<span id="cb14-5"><a href=""></a><span class="co"># Read in the xlsx file, which we know is located on sheet 2 inside of the file</span></span>
+<span id="cb14-6"><a href=""></a>data <span class="ot">&lt;-</span> <span class="fu">read_xlsx</span>(</span>
+<span id="cb14-7"><a href=""></a>  <span class="st">"data/cvdstudy.xlsx"</span>,</span>
+<span id="cb14-8"><a href=""></a>  <span class="at">sheet =</span> <span class="dv">2</span>,</span>
+<span id="cb14-9"><a href=""></a>  <span class="at">skip =</span> <span class="dv">10</span>,</span>
+<span id="cb14-10"><a href=""></a>  <span class="at">col_names =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb14-11"><a href=""></a>  <span class="at">col_types =</span> col_types</span>
+<span id="cb14-12"><a href=""></a>)</span>
+<span id="cb14-13"><a href=""></a></span>
+<span id="cb14-14"><a href=""></a><span class="co"># Look at the data</span></span>
+<span id="cb14-15"><a href=""></a>data</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 2,401 × 10
    id    survdate   age   edu smoke  cigs   sbp   dbp  chol glucose
@@ -3384,16 +3381,16 @@
 <section id="example-read_xlsx-2" class="slide level2 smaller">
 <h2>Example: <code>read_xlsx()</code></h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1"></a><span class="co"># Read in the xlsx file, which we know is located on sheet 2 inside of the file</span></span>
-<span id="cb16-2"><a href="#cb16-2"></a>data <span class="ot">&lt;-</span> <span class="fu">read_xlsx</span>(<span class="st">"data/cvdstudy.xlsx"</span>, <span class="at">sheet =</span> <span class="dv">2</span>, <span class="at">skip =</span> <span class="dv">10</span>, <span class="at">col_names =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb16-3"><a href="#cb16-3"></a></span>
-<span id="cb16-4"><a href="#cb16-4"></a><span class="co"># Base R approach to updating column data types (we'll learn more elegant solutions, soon!)</span></span>
-<span id="cb16-5"><a href="#cb16-5"></a>data<span class="sc">$</span>survdate <span class="ot">&lt;-</span> <span class="fu">as.Date</span>(data<span class="sc">$</span>survdate)</span>
-<span id="cb16-6"><a href="#cb16-6"></a>data<span class="sc">$</span>edu <span class="ot">&lt;-</span> <span class="fu">factor</span>(data<span class="sc">$</span>edu, <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">"1"</span>, <span class="st">"2"</span>, <span class="st">"3"</span>, <span class="st">"4"</span>))</span>
-<span id="cb16-7"><a href="#cb16-7"></a>data<span class="sc">$</span>smoke <span class="ot">&lt;-</span> <span class="fu">factor</span>(data<span class="sc">$</span>smoke, <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">"0"</span>, <span class="st">"1"</span>))</span>
-<span id="cb16-8"><a href="#cb16-8"></a></span>
-<span id="cb16-9"><a href="#cb16-9"></a><span class="co"># Look at the data</span></span>
-<span id="cb16-10"><a href="#cb16-10"></a>data</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href=""></a><span class="co"># Read in the xlsx file, which we know is located on sheet 2 inside of the file</span></span>
+<span id="cb16-2"><a href=""></a>data <span class="ot">&lt;-</span> <span class="fu">read_xlsx</span>(<span class="st">"data/cvdstudy.xlsx"</span>, <span class="at">sheet =</span> <span class="dv">2</span>, <span class="at">skip =</span> <span class="dv">10</span>, <span class="at">col_names =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb16-3"><a href=""></a></span>
+<span id="cb16-4"><a href=""></a><span class="co"># Base R approach to updating column data types (we'll learn more elegant solutions, soon!)</span></span>
+<span id="cb16-5"><a href=""></a>data<span class="sc">$</span>survdate <span class="ot">&lt;-</span> <span class="fu">as.Date</span>(data<span class="sc">$</span>survdate)</span>
+<span id="cb16-6"><a href=""></a>data<span class="sc">$</span>edu <span class="ot">&lt;-</span> <span class="fu">factor</span>(data<span class="sc">$</span>edu, <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">"1"</span>, <span class="st">"2"</span>, <span class="st">"3"</span>, <span class="st">"4"</span>))</span>
+<span id="cb16-7"><a href=""></a>data<span class="sc">$</span>smoke <span class="ot">&lt;-</span> <span class="fu">factor</span>(data<span class="sc">$</span>smoke, <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">"0"</span>, <span class="st">"1"</span>))</span>
+<span id="cb16-8"><a href=""></a></span>
+<span id="cb16-9"><a href=""></a><span class="co"># Look at the data</span></span>
+<span id="cb16-10"><a href=""></a>data</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 2,401 × 10
    id    survdate     age edu   smoke  cigs   sbp   dbp  chol glucose
@@ -3417,7 +3414,7 @@
 <p><br></p>
 <p><span class="blue-bold">Much better. We’ve come so far!</span></p>
 <div class="fragment">
-<p><img data-src="images/chill-guy-sunset.gif" class="absolute" style="bottom: 70px; right: 0px; height: 50%; "></p>
+<p><img data-src="images/bus-data-before-after.png" class="absolute" style="bottom: 70px; right: 0px; height: 50%; "></p>
 </div>
 </section>
 <section id="haven" class="slide level2 smaller">
@@ -3448,17 +3445,16 @@
 </ul>
 </div><div class="column" style="width:40%;">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1"></a><span class="fu">read_dta</span>(</span>
-<span id="cb18-2"><a href="#cb18-2"></a>  file,</span>
-<span id="cb18-3"><a href="#cb18-3"></a>  <span class="at">encoding =</span> <span class="cn">NULL</span>,</span>
-<span id="cb18-4"><a href="#cb18-4"></a>  <span class="at">col_select =</span> <span class="cn">NULL</span>,</span>
-<span id="cb18-5"><a href="#cb18-5"></a>  <span class="at">skip =</span> <span class="dv">0</span>,</span>
-<span id="cb18-6"><a href="#cb18-6"></a>  <span class="at">n_max =</span> <span class="cn">Inf</span>,</span>
-<span id="cb18-7"><a href="#cb18-7"></a>  <span class="at">.name_repair =</span> <span class="st">"unique"</span></span>
-<span id="cb18-8"><a href="#cb18-8"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href=""></a><span class="fu">read_dta</span>(</span>
+<span id="cb18-2"><a href=""></a>  file,</span>
+<span id="cb18-3"><a href=""></a>  <span class="at">encoding =</span> <span class="cn">NULL</span>,</span>
+<span id="cb18-4"><a href=""></a>  <span class="at">col_select =</span> <span class="cn">NULL</span>,</span>
+<span id="cb18-5"><a href=""></a>  <span class="at">skip =</span> <span class="dv">0</span>,</span>
+<span id="cb18-6"><a href=""></a>  <span class="at">n_max =</span> <span class="cn">Inf</span>,</span>
+<span id="cb18-7"><a href=""></a>  <span class="at">.name_repair =</span> <span class="st">"unique"</span></span>
+<span id="cb18-8"><a href=""></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-</div>
-</div>
+</div></div>
 
 <aside><div>
 <p><a href="https://haven.tidyverse.org/" class="uri">https://haven.tidyverse.org/</a></p>
@@ -3466,19 +3462,19 @@
 <section id="example-read_dta" class="slide level2 smaller">
 <h2>Example: <code>read_dta()</code></h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1"></a><span class="co"># Load the haven package</span></span>
-<span id="cb19-2"><a href="#cb19-2"></a><span class="fu">library</span>(haven)</span>
-<span id="cb19-3"><a href="#cb19-3"></a></span>
-<span id="cb19-4"><a href="#cb19-4"></a><span class="co"># Read in the stata (.dta) file</span></span>
-<span id="cb19-5"><a href="#cb19-5"></a>data <span class="ot">&lt;-</span> <span class="fu">read_dta</span>(<span class="st">"data/cvdstudy.dta"</span>)</span>
-<span id="cb19-6"><a href="#cb19-6"></a></span>
-<span id="cb19-7"><a href="#cb19-7"></a><span class="co"># Use the base R approach to update data types </span></span>
-<span id="cb19-8"><a href="#cb19-8"></a>data<span class="sc">$</span>survdate <span class="ot">&lt;-</span> <span class="fu">as.Date</span>(data<span class="sc">$</span>survdate)</span>
-<span id="cb19-9"><a href="#cb19-9"></a>data<span class="sc">$</span>edu <span class="ot">&lt;-</span> <span class="fu">factor</span>(data<span class="sc">$</span>edu, <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">"1"</span>, <span class="st">"2"</span>, <span class="st">"3"</span>, <span class="st">"4"</span>))</span>
-<span id="cb19-10"><a href="#cb19-10"></a>data<span class="sc">$</span>smoke <span class="ot">&lt;-</span> <span class="fu">factor</span>(data<span class="sc">$</span>smoke, <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">"0"</span>, <span class="st">"1"</span>))</span>
-<span id="cb19-11"><a href="#cb19-11"></a></span>
-<span id="cb19-12"><a href="#cb19-12"></a><span class="co"># Look at the data</span></span>
-<span id="cb19-13"><a href="#cb19-13"></a>data</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href=""></a><span class="co"># Load the haven package</span></span>
+<span id="cb19-2"><a href=""></a><span class="fu">library</span>(haven)</span>
+<span id="cb19-3"><a href=""></a></span>
+<span id="cb19-4"><a href=""></a><span class="co"># Read in the stata (.dta) file</span></span>
+<span id="cb19-5"><a href=""></a>data <span class="ot">&lt;-</span> <span class="fu">read_dta</span>(<span class="st">"data/cvdstudy.dta"</span>)</span>
+<span id="cb19-6"><a href=""></a></span>
+<span id="cb19-7"><a href=""></a><span class="co"># Use the base R approach to update data types </span></span>
+<span id="cb19-8"><a href=""></a>data<span class="sc">$</span>survdate <span class="ot">&lt;-</span> <span class="fu">as.Date</span>(data<span class="sc">$</span>survdate)</span>
+<span id="cb19-9"><a href=""></a>data<span class="sc">$</span>edu <span class="ot">&lt;-</span> <span class="fu">factor</span>(data<span class="sc">$</span>edu, <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">"1"</span>, <span class="st">"2"</span>, <span class="st">"3"</span>, <span class="st">"4"</span>))</span>
+<span id="cb19-10"><a href=""></a>data<span class="sc">$</span>smoke <span class="ot">&lt;-</span> <span class="fu">factor</span>(data<span class="sc">$</span>smoke, <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">"0"</span>, <span class="st">"1"</span>))</span>
+<span id="cb19-11"><a href=""></a></span>
+<span id="cb19-12"><a href=""></a><span class="co"># Look at the data</span></span>
+<span id="cb19-13"><a href=""></a>data</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 2,401 × 10
    id    survdate     age edu   smoke  cigs   sbp   dbp  chol glucose
@@ -3504,8 +3500,8 @@
 <section id="example-read_dta-1" class="slide level2 smaller">
 <h2>Example: <code>read_dta()</code></h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1"></a><span class="co"># Look at the structure of the data object to which we assigned the imported dataset</span></span>
-<span id="cb21-2"><a href="#cb21-2"></a><span class="fu">str</span>(data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href=""></a><span class="co"># Look at the structure of the data object to which we assigned the imported dataset</span></span>
+<span id="cb21-2"><a href=""></a><span class="fu">str</span>(data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>tibble [2,401 × 10] (S3: tbl_df/tbl/data.frame)
  $ id      : chr [1:2401] "32955" "36997" "34659" "36762" ...
@@ -3566,10 +3562,10 @@
 <p>Your non-technical colleague has reached out to you for assistance with preparing an old dataset for an upcoming project. Your colleague typically receives curated datasets and has not previously worked with data stored in a fixed width file format.</p>
 <p>As an expert R programmer, you offer to help. Upon receiving the dataset, you read the data into R to inspect its contents and observe the following:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1"></a><span class="co"># Load the readr package</span></span>
-<span id="cb23-2"><a href="#cb23-2"></a><span class="fu">library</span>(readr)</span>
-<span id="cb23-3"><a href="#cb23-3"></a></span>
-<span id="cb23-4"><a href="#cb23-4"></a><span class="fu">read_fwf</span>(<span class="st">"data/newstudy.txt"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href=""></a><span class="co"># Load the readr package</span></span>
+<span id="cb23-2"><a href=""></a><span class="fu">library</span>(readr)</span>
+<span id="cb23-3"><a href=""></a></span>
+<span id="cb23-4"><a href=""></a><span class="fu">read_fwf</span>(<span class="st">"data/newstudy.txt"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 534 × 2
         X1 X2                  
@@ -3594,14 +3590,14 @@
 <h2 data-id="quarto-animate-title">Case study 1 (cont.)</h2>
 <div class="fragment">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb25" data-code-line-numbers="3|1-2|1-5|1-8"><pre class="sourceCode numberSource r number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode r hljs"><span id="cb25-1" class="hljs-ln-code"><a href="#cb25-1"></a><span class="co"># Vector of column widths</span></span>
-<span id="cb25-2" class="hljs-ln-code"><a href="#cb25-2"></a>col_widths <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">5</span>, <span class="dv">2</span>, <span class="dv">2</span>, <span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">5</span>, <span class="dv">5</span>, <span class="dv">3</span>, <span class="dv">3</span>)</span>
-<span id="cb25-3" class="hljs-ln-code"><a href="#cb25-3"></a></span>
-<span id="cb25-4" class="hljs-ln-code"><a href="#cb25-4"></a><span class="co"># Vector of column names</span></span>
-<span id="cb25-5" class="hljs-ln-code"><a href="#cb25-5"></a>col_names <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"id"</span>, <span class="st">"age"</span>, <span class="st">"edu"</span>, <span class="st">"smoke"</span>, <span class="st">"cigs"</span>, <span class="st">"sbp"</span>, <span class="st">"dbp"</span>, <span class="st">"chol"</span>, <span class="st">"glucose"</span>)</span>
-<span id="cb25-6" class="hljs-ln-code"><a href="#cb25-6"></a></span>
-<span id="cb25-7" class="hljs-ln-code"><a href="#cb25-7"></a><span class="co"># Read in the data, specifying column names and widths</span></span>
-<span id="cb25-8" class="hljs-ln-code"><a href="#cb25-8"></a>data <span class="ot">&lt;-</span> <span class="fu">read_fwf</span>(<span class="st">"data/newstudy.txt"</span>, <span class="fu">fwf_widths</span>(<span class="at">widths =</span> col_widths, <span class="at">col_names =</span> col_names))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb25" data-code-line-numbers="3|1-2|1-5|1-8"><pre class="sourceCode numberSource r number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode r hljs"><span id="cb25-1" class="hljs-ln-code"><a href=""></a><span class="co"># Vector of column widths</span></span>
+<span id="cb25-2" class="hljs-ln-code"><a href=""></a>col_widths <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">5</span>, <span class="dv">2</span>, <span class="dv">2</span>, <span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">5</span>, <span class="dv">5</span>, <span class="dv">3</span>, <span class="dv">3</span>)</span>
+<span id="cb25-3" class="hljs-ln-code"><a href=""></a></span>
+<span id="cb25-4" class="hljs-ln-code"><a href=""></a><span class="co"># Vector of column names</span></span>
+<span id="cb25-5" class="hljs-ln-code"><a href=""></a>col_names <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"id"</span>, <span class="st">"age"</span>, <span class="st">"edu"</span>, <span class="st">"smoke"</span>, <span class="st">"cigs"</span>, <span class="st">"sbp"</span>, <span class="st">"dbp"</span>, <span class="st">"chol"</span>, <span class="st">"glucose"</span>)</span>
+<span id="cb25-6" class="hljs-ln-code"><a href=""></a></span>
+<span id="cb25-7" class="hljs-ln-code"><a href=""></a><span class="co"># Read in the data, specifying column names and widths</span></span>
+<span id="cb25-8" class="hljs-ln-code"><a href=""></a>data <span class="ot">&lt;-</span> <span class="fu">read_fwf</span>(<span class="st">"data/newstudy.txt"</span>, <span class="fu">fwf_widths</span>(<span class="at">widths =</span> col_widths, <span class="at">col_names =</span> col_names))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p><img data-src="images/codebook-example.png" class="absolute" style="bottom: 0px; right: 0px; height: 65%; "></p>
 </div>
@@ -3627,22 +3623,21 @@
 # ℹ 524 more rows</code></pre>
 </div>
 </div>
-</div>
-</div>
+</div></div>
 </div>
 </section>
 <section id="case-study-2" class="slide level2 smaller">
 <h2>Case study 2</h2>
 <p>Your colleague asks for another favor. As part of their planned analysis, the research team hopes to incorporate exercise testing data obtained from a subset of study participants who had clinical assessments. Your colleague tells you that the data are stored in a formatted excel file that’s exported directly from the exercise testing software, and their team has had trouble getting data into R to analyze. You offer to help, and your colleague provides you with a sample dataset to inspect. You observe the following:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1"></a><span class="co"># Load the readxl package</span></span>
-<span id="cb27-2"><a href="#cb27-2"></a><span class="fu">library</span>(readxl)</span>
-<span id="cb27-3"><a href="#cb27-3"></a></span>
-<span id="cb27-4"><a href="#cb27-4"></a><span class="co"># Read in the xlsx file</span></span>
-<span id="cb27-5"><a href="#cb27-5"></a>data <span class="ot">&lt;-</span> <span class="fu">read_xlsx</span>(<span class="st">"data/exercise.xlsx"</span>)</span>
-<span id="cb27-6"><a href="#cb27-6"></a></span>
-<span id="cb27-7"><a href="#cb27-7"></a><span class="co"># Look at the data</span></span>
-<span id="cb27-8"><a href="#cb27-8"></a>data</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href=""></a><span class="co"># Load the readxl package</span></span>
+<span id="cb27-2"><a href=""></a><span class="fu">library</span>(readxl)</span>
+<span id="cb27-3"><a href=""></a></span>
+<span id="cb27-4"><a href=""></a><span class="co"># Read in the xlsx file</span></span>
+<span id="cb27-5"><a href=""></a>data <span class="ot">&lt;-</span> <span class="fu">read_xlsx</span>(<span class="st">"data/exercise.xlsx"</span>)</span>
+<span id="cb27-6"><a href=""></a></span>
+<span id="cb27-7"><a href=""></a><span class="co"># Look at the data</span></span>
+<span id="cb27-8"><a href=""></a>data</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 695 × 11
    Participant `123456` ...3  ...4  ...5  ...6     ...7  ...8  ...9  ...10 ...11
@@ -3672,10 +3667,10 @@
 </ul></li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1"></a>data <span class="ot">&lt;-</span> <span class="fu">read_xlsx</span>(<span class="st">"data/exercise.xlsx"</span>, <span class="at">skip =</span> <span class="dv">3</span>)[<span class="sc">-</span><span class="dv">1</span>,]</span>
-<span id="cb29-2"><a href="#cb29-2"></a></span>
-<span id="cb29-3"><a href="#cb29-3"></a><span class="co"># Look at the data</span></span>
-<span id="cb29-4"><a href="#cb29-4"></a>data</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href=""></a>data <span class="ot">&lt;-</span> <span class="fu">read_xlsx</span>(<span class="st">"data/exercise.xlsx"</span>, <span class="at">skip =</span> <span class="dv">3</span>)[<span class="sc">-</span><span class="dv">1</span>,]</span>
+<span id="cb29-2"><a href=""></a></span>
+<span id="cb29-3"><a href=""></a><span class="co"># Look at the data</span></span>
+<span id="cb29-4"><a href=""></a>data</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 691 × 11
    Time  Work  Speed Grade HR    VO2   RR    PETCO2 SpO2  sysBP diaBP
@@ -3697,14 +3692,14 @@
 <section id="case-study-2-cont.-1" class="slide level2 smaller">
 <h2>Case study 2 (cont.)</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1"></a><span class="co"># Coerce all but the time column to a numeric data type</span></span>
-<span id="cb31-2"><a href="#cb31-2"></a>data[<span class="dv">2</span><span class="sc">:</span><span class="dv">11</span>] <span class="ot">&lt;-</span> <span class="fu">sapply</span>(data[<span class="dv">2</span><span class="sc">:</span><span class="dv">11</span>], as.numeric)</span>
-<span id="cb31-3"><a href="#cb31-3"></a></span>
-<span id="cb31-4"><a href="#cb31-4"></a><span class="co"># Standardize the column names (all lower case)</span></span>
-<span id="cb31-5"><a href="#cb31-5"></a><span class="fu">colnames</span>(data) <span class="ot">&lt;-</span> <span class="fu">tolower</span>(<span class="fu">colnames</span>(data))</span>
-<span id="cb31-6"><a href="#cb31-6"></a></span>
-<span id="cb31-7"><a href="#cb31-7"></a><span class="co"># Look at the data</span></span>
-<span id="cb31-8"><a href="#cb31-8"></a>data</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href=""></a><span class="co"># Coerce all but the time column to a numeric data type</span></span>
+<span id="cb31-2"><a href=""></a>data[<span class="dv">2</span><span class="sc">:</span><span class="dv">11</span>] <span class="ot">&lt;-</span> <span class="fu">sapply</span>(data[<span class="dv">2</span><span class="sc">:</span><span class="dv">11</span>], as.numeric)</span>
+<span id="cb31-3"><a href=""></a></span>
+<span id="cb31-4"><a href=""></a><span class="co"># Standardize the column names (all lower case)</span></span>
+<span id="cb31-5"><a href=""></a><span class="fu">colnames</span>(data) <span class="ot">&lt;-</span> <span class="fu">tolower</span>(<span class="fu">colnames</span>(data))</span>
+<span id="cb31-6"><a href=""></a></span>
+<span id="cb31-7"><a href=""></a><span class="co"># Look at the data</span></span>
+<span id="cb31-8"><a href=""></a>data</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 691 × 11
    time   work speed grade    hr   vo2    rr petco2  spo2 sysbp diabp
@@ -3782,9 +3777,11 @@
 <li><a href="https://www.epirhandbook.com/en/new_pages/importing.html" class="uri">https://www.epirhandbook.com/en/new_pages/importing.html</a></li>
 </ul></li>
 </ul>
-
-<img src="images/id529-sticker.png" class="slide-logo r-stretch"><div class="footer footer-default">
+<div class="quarto-auto-generated-content">
+<p><img src="images/id529-sticker.png" class="slide-logo"></p>
+<div class="footer footer-default">
 <p><a href="https://id529.github.io/" class="uri">https://id529.github.io/</a></p>
+</div>
 </div>
 </section></section>
     </div>
@@ -3813,7 +3810,6 @@
       Reveal.initialize({
 'controlsAuto': true,
 'previewLinksAuto': false,
-'smaller': false,
 'pdfSeparateFragments': false,
 'autoAnimateEasing': "ease",
 'autoAnimateDuration': 1,
@@ -4068,18 +4064,7 @@
         }
         return false;
       }
-      const clipboard = new window.ClipboardJS('.code-copy-button', {
-        text: function(trigger) {
-          const codeEl = trigger.previousElementSibling.cloneNode(true);
-          for (const childEl of codeEl.children) {
-            if (isCodeAnnotation(childEl)) {
-              childEl.remove();
-            }
-          }
-          return codeEl.innerText;
-        }
-      });
-      clipboard.on('success', function(e) {
+      const onCopySuccess = function(e) {
         // button target
         const button = e.trigger;
         // don't keep focus
@@ -4111,11 +4096,50 @@
         }, 1000);
         // clear code selection
         e.clearSelection();
+      }
+      const getTextToCopy = function(trigger) {
+          const codeEl = trigger.previousElementSibling.cloneNode(true);
+          for (const childEl of codeEl.children) {
+            if (isCodeAnnotation(childEl)) {
+              childEl.remove();
+            }
+          }
+          return codeEl.innerText;
+      }
+      const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+        text: getTextToCopy
       });
-      function tippyHover(el, contentFn) {
+      clipboard.on('success', onCopySuccess);
+      if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+        // For code content inside modals, clipBoardJS needs to be initialized with a container option
+        // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+        const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+          text: getTextToCopy,
+          container: window.document.getElementById('quarto-embedded-source-code-modal')
+        });
+        clipboardModal.on('success', onCopySuccess);
+      }
+        var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+        var mailtoRegex = new RegExp(/^mailto:/);
+          var filterRegex = new RegExp('/' + window.location.host + '/');
+        var isInternal = (href) => {
+            return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+        }
+        // Inspect non-navigation links and adorn them if external
+     	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+        for (var i=0; i<links.length; i++) {
+          const link = links[i];
+          if (!isInternal(link.href)) {
+            // undo the damage that might have been done by quarto-nav.js in the case of
+            // links that we want to consider external
+            if (link.dataset.originalHref !== undefined) {
+              link.href = link.dataset.originalHref;
+            }
+          }
+        }
+      function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
         const config = {
           allowHTML: true,
-          content: contentFn,
           maxWidth: 500,
           delay: 100,
           arrow: false,
@@ -4125,8 +4149,17 @@
           interactive: true,
           interactiveBorder: 10,
           theme: 'light-border',
-          placement: 'bottom-start'
+          placement: 'bottom-start',
         };
+        if (contentFn) {
+          config.content = contentFn;
+        }
+        if (onTriggerFn) {
+          config.onTrigger = onTriggerFn;
+        }
+        if (onUntriggerFn) {
+          config.onUntrigger = onUntriggerFn;
+        }
           config['offset'] = [0,0];
           config['maxWidth'] = 700;
         window.tippy(el, config); 
@@ -4140,7 +4173,11 @@
           try { href = new URL(href).hash; } catch {}
           const id = href.replace(/^#\/?/, "");
           const note = window.document.getElementById(id);
-          return note.innerHTML;
+          if (note) {
+            return note.innerHTML;
+          } else {
+            return "";
+          }
         });
       }
       const findCites = (el) => {

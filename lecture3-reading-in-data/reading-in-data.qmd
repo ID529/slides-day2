@@ -6,7 +6,7 @@ format:
     logo: images/id529-sticker.png
     slide-number: true
     footer: "<https://id529.github.io/>"
-# embed-resources: true
+    # embed-resources: true
 ---
 
 # Importing Data into R {.white-title background-image="images/bg-collatz-2.png" background-size="cover"}
@@ -16,7 +16,7 @@ ID 529: Data Management and Analytic Workflows in R
 :::
 
 ::: {.white-12-pt}
-Dean Marengi \| Tuesday, January 14<sup>th</sup>, 2025
+Dean Marengi \| Tuesday, January 13<sup>th</sup>, 2026
 :::
 
 ## Motivation {.smaller}
@@ -458,7 +458,7 @@ data
 . . .
 
 
-![](images/chill-guy-sunset.gif){.absolute right="0" bottom="70" height="50%"}
+![](images/bus-data-before-after.png){.absolute right="0" bottom="70" height="50%"}
 
 
 ## `haven` {.smaller}
